@@ -1,0 +1,323 @@
+:root {
+  --deep-green: #0f5129;
+  --nav-green: #0c4020;
+  --accent-gold: #d8b76a;
+  --card-bg: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --text-dark: #05301c;
+  --white: #ffffff;
+}
+
+/* Page base */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family:
+    "Poppins",
+    system-ui,
+    Segoe UI,
+    Roboto,
+    Arial;
+  color: var(--text-dark);
+  background: url("final.png") center/cover no-repeat fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dim overlay to match index + slight gradient */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 64, 32, 0.46),
+    rgba(255, 255, 255, 0.25)
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Logo top-left (same placement as index) */
+.logo {
+  position: fixed;
+  /* top: 5px; */
+  left: 18px;
+  height: 150px;
+  width: auto;
+  z-index: 100;
+  pointer-events: none;
+}
+/* Main wrapper centers the card */
+.wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Glass card */
+.card {
+  width: 960px;
+  max-width: 96%;
+  border-radius: 18px;
+  background: var(--card-bg);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(3, 20, 10, 0.45);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  animation: cardIn 0.7s ease;
+}
+
+/* Left banner area (visual) */
+.card .left {
+  padding: 36px;
+  background: linear-gradient(
+    135deg,
+    rgba(12, 64, 32, 0.14),
+    rgba(255, 255, 255, 0.02)
+  );
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+.brand-title {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+.brand-sub {
+  font-size: 25px !important;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 14px;
+  opacity: 0.95;
+}
+.left-art {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.leaf-badge {
+  width: 78px;
+  height: 78px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #2a6b3a, #1a5b2c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  font-size: 34px;
+}
+.left-note {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 13px;
+  line-height: 1.45;
+  opacity: 0.95;
+}
+
+/* Right: form area */
+.card .right {
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-title {
+  margin: 4px 0 14px 0;
+  font-size: 30px;
+  color: var(--white);
+  font-weight: 700;
+}
+
+/* Grid of inputs — 2 columns table-like */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 14px;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Floating label technique: inputs have placeholder " " to enable :placeholder-shown */
+.field input,
+.field select,
+.field textarea {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--white);
+  padding: 12px 12px 12px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition:
+    box-shadow 0.18s,
+    transform 0.12s;
+}
+
+.field textarea {
+  min-height: 68px;
+  resize: vertical;
+  padding-top: 10px;
+}
+
+.field label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  font-size: 13px;
+  color: rgba(240, 240, 240, 0.88);
+  pointer-events: none;
+  transition: all 0.18s ease;
+  background: transparent;
+  padding: 0 6px;
+}
+
+/* When input filled or focused => label moves up */
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  box-shadow: 0 6px 18px rgba(20, 80, 40, 0.12);
+  border-color: rgba(168, 255, 177, 0.6);
+  transform: translateY(-0.5px);
+}
+.field input:focus + label,
+.field textarea:focus + label,
+.field select:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 8px;
+  font-size: 12px;
+  color: var(--accent-gold);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  padding: 0 6px;
+}
+
+/* Buttons area spans full width under grid */
+.actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+.btn-primary {
+  flex: 1;
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, var(--deep-green), #1e7e34);
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(15, 81, 41, 0.18);
+}
+
+.btn-outline {
+  flex: 1;
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: transparent;
+  color: var(--white);
+  font-weight: 700;
+  border: 1.6px solid rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition: color 0.18s;
+}
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--accent-gold);
+}
+
+/* QR small box centered */
+.qr-wrap {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#qrcode {
+  width: 100px !important;
+  height: 100px !important;
+  background: #fff;
+  padding: 6px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  display: block;
+}
+
+/* Footer note */
+.card-foot {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive: collapse to 1 column under 840px */
+@media (max-width: 840px) {
+  .card {
+    grid-template-columns: 1fr;
+    width: 92%;
+  }
+  .left {
+    order: 2;
+    padding: 20px;
+    text-align: center;
+  }
+  .right {
+    order: 1;
+    padding: 20px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Enter animation */
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.left-note {
+  font-size: 20px;
+}
+.qr-wrap {
+  display: none; /* hide whole section */
+}
+
