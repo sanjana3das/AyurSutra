@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AyurSutra Therapies</title>
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+        html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+      :root {
+        --deep-green: #0f5129;
+        --accent-gold: #d8b76a;
+        --white: #ffffff;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: url("/images/final.png") center/cover no-repeat fixed;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(12, 64, 32, 0.46),
+          rgba(255, 255, 255, 0.25)
+        );
+        z-index: 0;
+      }
+
+     .logo {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 130px;
+  width: auto;
+  z-index: 9999;
+  pointer-events: none;
+  display: block;
+}
+      .slider-container {
+        position: relative;
+        width: 80%;
+        max-width: 900px;
+        border-radius: 20px;
+        backdrop-filter: blur(14px) saturate(120%);
+        -webkit-backdrop-filter: blur(14px) saturate(120%);
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 10px 30px rgba(3, 20, 10, 0.45);
+        overflow: hidden;
+        z-index: 2;
+      }
+
+      .slide {
+        display: none;
+        position: relative;
+        text-align: center;
+        color: var(--white);
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .slide.active {
+        display: block;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        opacity: 0.9;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+
+      .slide img:hover {
+        transform: scale(1.04);
+        opacity: 1;
+      }
+
+      .slide-content {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.55);
+        border-radius: 15px;
+        padding: 20px 30px;
+        width: 80%;
+      }
+
+      .slide-content h2 {
+        font-weight: 700;
+        color: var(--accent-gold);
+        margin-bottom: 10px;
+      }
+
+      .slide-content p {
+        font-size: 15px;
+        margin-bottom: 15px;
+      }
+
+      .btn-glow {
+        background: linear-gradient(135deg, var(--deep-green), #1e7e34);
+        border: none;
+        color: #fff;
+        padding: 10px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-glow:hover {
+        background: #2b9449;
+        box-shadow: 0 0 15px #aef08a;
+      }
+
+      /* Navigation Buttons */
+      .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.5);
+        color: black; /* changed to black */
+        border: none;
+        font-size: 45px; /* increased size */
+        padding: 10px 18px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10;
+      }
+
+      .nav-btn:hover {
+        background: rgba(255, 255, 255, 0.8);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .prev {
+        left: 15px;
+      }
+
+      .next {
+        right: 15px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="#"><img src="/images/logo.png" alt="AyurSutra" class="logo" /></a>
+
+    <div class="slider-container">
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <img src="/images/abyanga.jpg.jpg" alt="Abhyanga Therapy" />
+        <div class="slide-content">
+          <h2>Abhyanga Therapy</h2>
+          <p>
+            Rejuvenate your body and mind with warm herbal oil massage that
+            improves circulation and relieves stress.
+          </p>
+          <button class="btn-glow">Book Therapy</button>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <img
+          src="/images/shridhora.png"
+          alt="Shirodhara Therapy"
+        />
+        <div class="slide-content">
+          <h2>Shirodhara Therapy</h2>
+          <p>
+            A gentle stream of warm oil on the forehead — helps calm the nervous
+            system and promote mental clarity.
+          </p>
+          <button class="btn-glow">Book Therapy</button>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <img
+          src="/images/swdha.png"
+          alt="Swedana Therapy"
+        />
+        <div class="slide-content">
+          <h2>Swedana Therapy</h2>
+          <p>
+            Steam therapy that eliminates toxins, enhances flexibility, and
+            opens up your body's natural energy flow.
+          </p>
+          <button class="btn-glow">Book Therapy</button>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="slide">
+        <img
+          src="/images/basti.png"
+          alt="Basti Therapy"
+        />
+        <div class="slide-content">
+          <h2>Basti Therapy</h2>
+          <p>
+            Detoxifying herbal enema treatment that balances Vata dosha and
+            improves digestion and immunity.
+          </p>
+          <button class="btn-glow">Book Therapy</button>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="slide">
+        <img
+          src="/images/nasya.png"
+          alt="Nasya Therapy"
+        />
+        <div class="slide-content">
+          <h2>Nasya Therapy</h2>
+          <p>
+            Nasal cleansing therapy that purifies the head region and improves
+            respiratory and mental health.
+          </p>
+          <button class="btn-glow">Book Therapy</button>
+        </div>
+      </div>
+
+      <button class="nav-btn prev">&#10094;</button>
+      <button class="nav-btn next">&#10095;</button>
+    </div>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.remove("active");
+          if (i === index) slide.classList.add("active");
+        });
+      }
+
+      document.querySelector(".next").addEventListener("click", () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      });
+
+      document.querySelector(".prev").addEventListener("click", () => {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      });
+    </script>
+  </body>
+</html>

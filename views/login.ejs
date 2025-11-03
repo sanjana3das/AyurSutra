@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AyurSutra — Login</title>
+
+    <style>
+      :root {
+        --deep-green: #0f5129;
+        --nav-green: #0c4020;
+        --accent-gold: #d8b76a;
+        --card-bg: rgba(255, 255, 255, 0.12);
+        --glass-border: rgba(255, 255, 255, 0.18);
+        --text-dark: #05301c;
+        --white: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          "Poppins",
+          system-ui,
+          Segoe UI,
+          Roboto,
+          Arial;
+        color: var(--text-dark);
+        background: url("/images/final.png") center/cover no-repeat fixed;
+        min-height: 100vh;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(12, 64, 32, 0.46),
+          rgba(255, 255, 255, 0.25)
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .logo {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        height: 130px;
+        width: auto;
+        z-index: 9999;
+        pointer-events: none;
+        display: block;
+      }
+
+      .wrap {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .card {
+        width: 880px;
+        max-width: 96%;
+        border-radius: 18px;
+        background: var(--card-bg);
+        backdrop-filter: blur(14px) saturate(120%);
+        -webkit-backdrop-filter: blur(14px) saturate(120%);
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 10px 30px rgba(3, 20, 10, 0.45);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        animation: cardIn 0.7s ease;
+      }
+
+      .card .left {
+        padding: 36px;
+        background: linear-gradient(
+          135deg,
+          rgba(12, 64, 32, 0.14),
+          rgba(255, 255, 255, 0.02)
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 18px;
+      }
+
+      .brand-title {
+        color: var(--white);
+        font-weight: 700;
+        font-size: 28px;
+        margin: 0;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      }
+
+      .brand-sub {
+        font-size: 22px;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+      }
+
+      .left-note {
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 15px;
+        line-height: 1.45;
+        opacity: 0.95;
+      }
+
+      .card .right {
+        padding: 40px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .form-title {
+        margin: 0 0 18px 0;
+        font-size: 30px;
+        color: var(--white);
+        font-weight: 700;
+      }
+
+      .field {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+      }
+
+      .field input {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: var(--white);
+        padding: 12px 12px;
+        border-radius: 10px;
+        font-size: 14px;
+        outline: none;
+      }
+
+      .field label {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        font-size: 13px;
+        color: rgba(240, 240, 240, 0.88);
+        pointer-events: none;
+        transition: all 0.18s ease;
+        background: transparent;
+        padding: 0 6px;
+      }
+
+      .field input:focus,
+      .field input:not(:placeholder-shown) {
+        border-color: rgba(168, 255, 177, 0.6);
+      }
+
+      .field input:focus + label,
+      .field input:not(:placeholder-shown) + label {
+        top: -10px;
+        left: 8px;
+        font-size: 12px;
+        color: var(--accent-gold);
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 4px;
+        padding: 0 6px;
+      }
+
+      .btn-primary {
+        border-radius: 10px;
+        padding: 12px 14px;
+        background: linear-gradient(135deg, var(--deep-green), #1e7e34);
+        color: #fff;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        transition:
+          transform 0.16s ease,
+          box-shadow 0.16s;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(15, 81, 41, 0.18);
+      }
+
+      .card-foot {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      @media (max-width: 840px) {
+        .card {
+          grid-template-columns: 1fr;
+          width: 92%;
+        }
+        .left {
+          text-align: center;
+          padding: 20px;
+        }
+      }
+
+      @keyframes cardIn {
+        from {
+          opacity: 0;
+          transform: translateY(18px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="#"><img src="/images/logo.png" alt="AyurSutra" class="logo" /></a>
+
+    <div class="wrap">
+      <div class="card">
+        <div class="left">
+          <h3 class="brand-title">AyurSutra</h3>
+          <div class="brand-sub">
+            Panchakarma Patient Management Therapy Scheduling
+          </div>
+          <div class="left-note">
+            Welcome back — Log in to manage patients, therapies, and schedules
+            securely.
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="form-title">Login</div>
+
+<form action="/login" method="POST" autocomplete="off">
+  <div class="field">
+    <input id="email" name="username" type="email" placeholder=" " required />
+    <label for="email">Email </label>
+  </div>
+
+  <div class="field">
+    <input id="password" name="password" type="password" placeholder=" " required />
+    <label for="password">Password </label>
+  </div>
+
+  <% if (typeof error !== 'undefined') { %>
+    <p style="color: #ffb3b3; font-size: 13px; margin-top: -6px;"><%= error %></p>
+  <% } %>
+
+  <button type="submit" class="btn-primary">Login</button>
+</form>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

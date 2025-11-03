@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AyurSutra</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <style>
+      /* Global */
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        color: white;
+        background: url("/images/final.png") center/cover no-repeat fixed;
+        height: 100vh;
+      }
+
+      /* Light transparent overlay (NOT dark) */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(4px);
+        z-index: 0;
+      }
+
+      /* Floating Glass Navbar */
+      .glass-nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 14px 0;
+        background: rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 50;
+        height: 85px; /* Fixed height navbar */
+        display: flex;
+        align-items: center;
+      }
+
+      /* Logo */
+      .navbar {
+        height: 70px;
+        padding: 0 !important;
+        background: transparent !important;
+      }
+
+      /* Bigger floating logo */
+      .logo {
+        height: 140px; /* CHANGE SIZE HERE */
+        width: auto;
+        position: absolute;
+        left: 10; /* sticks fully left */
+        top: -15px; /* adjust up/down */
+        z-index: 20;
+        pointer-events: none; /* doesn't block clicks */
+      }
+
+      /* Buttons in navbar */
+      .btn-glass {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.2s;
+      }
+
+      .btn-glass:hover {
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      .btn-outline {
+        border: 2px solid white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .btn-outline:hover {
+        background: white;
+        color: #0f5129;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 5;
+        padding-top: 120px; /* offset for navbar */
+      }
+
+      .tagline {
+        font-size: 1.1rem;
+        font-weight: 300;
+        letter-spacing: 0.6px;
+      }
+
+      .title {
+        font-size: 4.8rem;
+        font-weight: 700;
+        margin: 12px 0;
+      }
+
+      .subtitle {
+        font-size: 2.3rem;
+        font-weight: 600;
+        line-height: 1.35;
+      }
+
+      .desc {
+        font-size: 1.08rem;
+        margin-top: 18px;
+        font-weight: 300;
+      }
+
+      /* CTA Buttons */
+      .btn-primary-glow {
+        background: #0f5129;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 6px 16px rgba(15, 81, 41, 0.35);
+        transition: 0.25s;
+      }
+      .btn-primary-glow:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 26px rgba(15, 81, 41, 0.48);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Glass Floating Navbar -->
+    <nav class="glass-nav">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a href="#" class="brand d-flex align-items-center">
+          <img src="/images/logo.png" alt="AyurSutra Logo" class="logo" />
+        </a>
+
+        <div class="mt-4 d-flex gap-3">
+          <a href="/register" class="btn btn-primary-glow px-4 py-2">Sign Up</a>
+          <a href="/login" class="btn btn-outline-light px-4 py-2">Login</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center">
+      <div class="container">
+        <div class="col-lg-6">
+          <p class="tagline">Traditional Medicine - Modern Automation</p>
+
+          <h1 class="title">AyurSutra</h1>
+
+          <h2 class="subtitle">
+            Panchakarma Patient<br />
+            Management & Therapy<br />
+            Scheduling
+          </h2>
+
+          <p class="desc">
+            A complete digital platform for your Ayurvedic center – manage
+            patients, schedule treatments, track progress and generate QR-based
+            patient records.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
