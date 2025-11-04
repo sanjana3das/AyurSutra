@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Therapy | AyurSutra</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f5f5f7;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 10px;
+      color: #111;
+    }
+
+    .booking-card {
+      width: 100%;
+      max-width: 650px;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 18px;
+      padding: 34px 40px;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.08);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #000;
+    }
+
+    .welcome {
+      font-size: 15px;
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      display: block;
+      color: #222;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.15);
+      background: #fff;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    select:focus, input:focus {
+      border-color: #000;
+      outline: none;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 28px;
+      padding: 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: #000;
+      color: #fff;
+      transition: 0.25s;
+      letter-spacing: 0.3px;
+    }
+
+    .submit-btn:hover {
+      background: #111;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="booking-card">
+    <h2>Book Your Therapy</h2>
+    <p class="welcome">Welcome, <b><%= user.name || user.username || user.email %></b></p>
+
+    <form action="/schedule" method="POST">
+
+      <div class="grid-2">
+        <div>
+          <label>Therapy</label>
+          <select name="therapy" required>
+            <option value="" hidden>Select therapy</option>
+            <% therapies.forEach(t => { %>
+              <option value="<%= t._id %>"><%= t.name %></option>
+            <% }) %>
+          </select>
+        </div>
+
+   
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <label>Select Date</label>
+          <input type="date" name="date" required min="<%= (new Date()).toISOString().split('T')[0] %>">
+        </div>
+
+        <div>
+          <label>Time Slot</label>
+          <select name="timeSlot" required>
+            <option value="" hidden>Select time</option>
+            <% timeSlots.forEach(slot => { %>
+              <option value="<%= slot %>"><%= slot %></option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+
+      <label>Email</label>
+      <input type="email" value="<%= user.email %>" disabled>
+
+      <button type="submit" class="submit-btn">Confirm Appointment</button>
+    </form>
+
+  </div>
+</body>
+</html>

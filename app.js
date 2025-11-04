@@ -76,9 +76,11 @@ app.use("/", loginRoutes);
 const patientRoutes = require("./routes/patient.js");
 app.use("/patient", patientRoutes);
 
+const scheduleRoutes = require("./routes/schedule.js");
+app.use("/schedule", scheduleRoutes);
 
 
-// // 404 error handler
+// 404 error handler
 // app.use((req, res, next) => {
 //   next(new ExpressError(404, "Page Not Found"));
 // });

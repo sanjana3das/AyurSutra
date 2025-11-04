@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointment Success</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f6f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+      .card {
+        background: #fff;
+        padding: 25px 35px;
+        border-radius: 10px;
+        width: 420px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: #222;
+      }
+      .details {
+        text-align: left;
+        font-size: 15px;
+        margin: 18px 0;
+        line-height: 1.5;
+      }
+      img {
+        width: 180px;
+        height: 180px;
+        margin: 15px 0;
+      }
+      .btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 22px;
+        border-radius: 6px;
+        background: #222;
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      .btn:hover {
+        background: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Appointment Booked Successfully</h2>
+
+      <img src="<%= booking.qrData %>" alt="QR Code" />
+
+      <div class="details">
+        <b>Name:</b> <%= booking.name %><br />
+        <b>Therapy:</b> <%= booking.therapy.name %><br />
+        <b>Date:</b> <%= booking.date.toISOString().split("T")[0] %><br />
+        <b>Time:</b> <%= booking.timeSlot %><br />
+        <b>Email:</b> <%= booking.email %>
+      </div>
+
+      <a href="/patient/dashboard" class="btn">Go to Dashboard</a>
+    </div>
+  </body>
+</html>
